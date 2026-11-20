@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7f2">
+  <meta name="description" content="A simple, independent guide to comparing international money transfer routes.">
+  <title>Finaidvice — Make your next move clear</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17241f;
+      --muted: #64736c;
+      --green: #245c45;
+      --green-dark: #193f31;
+      --mint: #e4eee6;
+      --paper: #f6f7f2;
+      --white: #fff;
+      --line: #e4e9e2;
+      --gold: #efbd62;
+      --shadow: 0 24px 70px rgba(27, 55, 42, .09);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); min-width: 320px; }
+    button, select { font: inherit; }
+    button { cursor: pointer; }
+    a { color: inherit; }
+    .shell { max-width: 1160px; width: calc(100% - 64px); margin: 0 auto; }
+
+    .site-header { height: 82px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(32, 63, 47, .09); }
+    .brand { display: inline-flex; gap: 11px; align-items: center; text-decoration: none; font-weight: 750; letter-spacing: -.04em; font-size: 19px; }
+    .brand-mark { width: 34px; height: 34px; border-radius: 12px; background: var(--green); color: white; display: grid; place-items: center; }
+    .brand-mark svg { width: 20px; height: 20px; }
+    .header-note { color: var(--muted); font-size: 13px; }
+
+    main { padding: 66px 0 90px; }
+    .hero { display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 54px; margin-bottom: 53px; }
+    .eyebrow { color: var(--green); text-transform: uppercase; letter-spacing: .16em; font-size: 11px; font-weight: 800; display: flex; align-items: center; gap: 9px; }
+    .eyebrow::before { content: ""; width: 23px; height: 1px; background: currentColor; }
+    h1 { font-size: clamp(42px, 5vw, 66px); line-height: 1.04; letter-spacing: -.065em; margin: 19px 0 20px; max-width: 590px; font-weight: 650; }
+    h1 em { font-family: Georgia, "Times New Roman", serif; font-weight: 400; color: var(--green); }
+    .hero-copy { color: var(--muted); line-height: 1.75; max-width: 480px; font-size: 16px; margin: 0; }
+    .hero-art { min-height: 234px; position: relative; border-radius: 24px; background: #e9eee6; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+    .art-orbit { position: absolute; width: 250px; height: 250px; border: 1px solid rgba(36, 92, 69, .16); border-radius: 50%; }
+    .art-orbit::before, .art-orbit::after { content: ""; position: absolute; border: 1px solid rgba(36, 92, 69, .15); border-radius: 50%; inset: 25px; }
+    .art-orbit::after { inset: 52px; }
+    .art-card { z-index: 1; background: var(--white); box-shadow: 0 14px 40px rgba(24, 58, 42, .12); border-radius: 16px; padding: 17px 19px; width: 224px; transform: rotate(-4deg); }
+    .art-card-top { display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: var(--muted); }
+    .art-amount { font-size: 28px; letter-spacing: -.05em; font-weight: 700; margin: 12px 0 2px; }
+    .art-card-bottom { color: var(--green); font-size: 11px; display: flex; align-items: center; gap: 6px; }
+    .art-card-bottom span { width: 6px; height: 6px; background: #67a37b; border-radius: 50%; }
+    .art-spark { position: absolute; right: 12%; top: 21%; color: var(--gold); font-size: 24px; }
+    .art-dot { position: absolute; left: 15%; bottom: 20%; width: 12px; height: 12px; background: #a4c6a9; border-radius: 50%; }
+
+    .workspace { display: grid; grid-template-columns: 225px minmax(0, 1fr); gap: 26px; align-items: start; }
+    .function-panel { padding: 23px 18px; border: 1px solid var(--line); background: rgba(255,255,255,.62); border-radius: 18px; }
+    .panel-label { display: block; color: #849087; text-transform: uppercase; font-size: 10px; font-weight: 750; letter-spacing: .13em; margin: 0 0 14px 9px; }
+    .function-toggle { width: 100%; display: flex; align-items: center; gap: 12px; padding: 12px 10px; text-align: left; border: 0; border-radius: 12px; background: var(--mint); color: var(--green-dark); font-size: 13px; font-weight: 700; }
+    .function-toggle svg:last-child { margin-left: auto; transition: transform .18s ease; }
+    .function-toggle[aria-expanded="true"] svg:last-child { transform: rotate(180deg); }
+    .function-icon { width: 31px; height: 31px; display: grid; place-items: center; border-radius: 9px; background: white; }
+    .function-menu { padding: 7px 0 0; }
+    .function-option { display: block; border: 0; border-radius: 9px; background: transparent; padding: 10px 12px 10px 53px; width: 100%; text-align: left; color: #67756e; font-size: 12px; }
+    .function-option:hover, .function-option:focus-visible { background: #f1f4ef; color: var(--green-dark); }
+    .function-option[aria-current="true"] { color: var(--green-dark); font-weight: 700; }
+    .side-note { padding: 16px 9px 2px; margin-top: 16px; border-top: 1px solid var(--line); color: #819087; font-size: 11px; line-height: 1.6; }
+
+    .tool-card { background: var(--white); border: 1px solid rgba(28, 63, 45, .06); border-radius: 20px; box-shadow: var(--shadow); overflow: hidden; }
+    .tool-head { padding: 26px 30px 21px; display: flex; justify-content: space-between; gap: 24px; align-items: flex-start; }
+    .tool-kicker { color: var(--green); font-size: 11px; font-weight: 750; letter-spacing: .11em; text-transform: uppercase; }
+    h2 { font-size: 24px; margin: 8px 0 7px; letter-spacing: -.04em; font-weight: 650; }
+    .tool-subtitle { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .secure-tag { white-space: nowrap; border: 1px solid var(--line); border-radius: 99px; display: inline-flex; align-items: center; gap: 7px; padding: 8px 10px; color: #6a796f; font-size: 10px; }
+    .secure-tag svg { color: var(--green); }
+    .tool-body { border-top: 1px solid #eef0ec; padding: 25px 30px 30px; }
+    .route-label { display: block; color: #718078; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
+    .route-fields { display: grid; grid-template-columns: 1fr 54px 1fr; gap: 12px; align-items: end; }
+    .select-wrap { min-width: 0; }
+    .select-wrap label { display: block; color: #78867e; font-size: 11px; margin-bottom: 8px; }
+    .country-select { appearance: none; width: 100%; border: 1px solid #dfe6de; border-radius: 11px; height: 50px; background: #fff; padding: 0 38px 0 14px; color: var(--ink); font-size: 13px; outline: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='m1 1 5 5 5-5' fill='none' stroke='%2364736c' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 15px center; }
+    .country-select:focus-visible { border-color: #58906f; box-shadow: 0 0 0 3px rgba(63, 130, 89, .12); }
+    .swap-button { width: 42px; height: 42px; margin: 0 auto 4px; display: grid; place-items: center; border: 1px solid var(--line); background: #f7f9f6; color: var(--green); border-radius: 50%; transition: transform .2s ease, background .2s ease; }
+    .swap-button:hover { transform: rotate(180deg); background: var(--mint); }
+    .route-result { display: none; margin-top: 21px; padding: 18px 19px; border-radius: 14px; background: #f1f6f0; border: 1px solid #e4ede3; }
+    .route-result.is-visible { display: block; animation: appear .24s ease-out; }
+    @keyframes appear { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    .result-topline { display: flex; align-items: center; gap: 8px; color: var(--green); font-size: 11px; font-weight: 750; text-transform: uppercase; letter-spacing: .09em; }
+    .route-result p { margin: 10px 0 14px; color: #42534a; font-size: 13px; line-height: 1.65; }
+    .result-footer { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .disclaimer { color: #7b8980; font-size: 10px; line-height: 1.45; }
+    .share-button { border: 0; border-radius: 9px; background: var(--green); color: white; padding: 11px 15px; font-size: 12px; font-weight: 700; white-space: nowrap; display: inline-flex; align-items: center; gap: 8px; }
+    .share-button:hover { background: var(--green-dark); }
+    .share-button:focus-visible, .function-toggle:focus-visible, .function-option:focus-visible, .swap-button:focus-visible { outline: 3px solid rgba(63, 130, 89, .26); outline-offset: 2px; }
+    .share-area { position: relative; }
+    .share-menu { position: absolute; z-index: 5; right: 0; bottom: calc(100% + 9px); width: 190px; background: white; padding: 7px; border-radius: 12px; box-shadow: 0 12px 34px rgba(21, 43, 31, .18); border: 1px solid var(--line); }
+    .share-menu[hidden] { display: none; }
+    .share-menu button, .share-menu a { display: flex; width: 100%; padding: 10px; gap: 9px; text-align: left; border: 0; border-radius: 8px; background: transparent; color: #384b40; font-size: 12px; text-decoration: none; }
+    .share-menu button:hover, .share-menu a:hover { background: #f2f6f1; }
+    .status { min-height: 17px; color: var(--green); font-size: 11px; margin-top: 10px; }
+    .trust-row { display: flex; flex-wrap: wrap; gap: 24px; margin: 25px 0 0; color: #7c8981; font-size: 11px; }
+    .trust-row span { display: inline-flex; align-items: center; gap: 7px; }
+    .trust-row svg { color: #5d8a6c; }
+    footer { border-top: 1px solid rgba(32, 63, 47, .1); padding: 22px 0 28px; color: #7b8880; font-size: 11px; display: flex; justify-content: space-between; gap: 18px; }
+    footer p { margin: 0; }
+
+    /* A quieter, utility-first presentation. */
+    :root {
+      --ink: #1d2923;
+      --muted: #748078;
+      --green: #315b45;
+      --green-dark: #244635;
+      --mint: #edf2ed;
+      --paper: #fff;
+      --line: #e8ece8;
+      --shadow: 0 10px 34px rgba(27, 55, 42, .05);
+    }
+    .shell { max-width: 980px; }
+    .site-header { height: 72px; }
+    .brand-mark { width: 30px; height: 30px; border-radius: 9px; }
+    main { padding-top: 54px; }
+    .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .82fr); gap: 48px; align-items: center; margin-bottom: 52px; }
+    .hero-art { min-height: 270px; position: relative; display: block; border-radius: 16px; background: #050505; overflow: hidden; }
+    .hero-image { display: block; width: 100%; height: 270px; object-fit: cover; object-position: center; }
+    .hero-image-note { position: absolute; left: 16px; bottom: 15px; padding: 8px 11px; border: 1px solid rgba(255,255,255,.2); border-radius: 6px; background: rgba(0,0,0,.4); color: rgba(255,255,255,.88); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; backdrop-filter: blur(8px); }
+    h1 { font-size: clamp(36px, 5vw, 52px); font-weight: 580; margin: 15px 0 12px; }
+    .hero-copy { font-size: 15px; max-width: 530px; }
+    .workspace { display: block; }
+    .function-panel { border: 0; border-radius: 0; padding: 0; background: transparent; }
+    .panel-label { display: none; }
+    .function-toggle { width: auto; min-height: 46px; gap: 10px; padding: 8px 14px; border: 1px solid var(--green); border-radius: 8px; background: var(--green); color: white; font-size: 13px; }
+    .function-toggle:hover { background: var(--green-dark); }
+    .function-icon { width: 24px; height: 24px; background: rgba(255,255,255,.15); color: white; }
+    .function-toggle svg:last-child { color: white; }
+    .function-menu { max-width: 370px; margin-top: 10px; }
+    .function-option { display: block; width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: white; color: var(--ink); text-align: left; font-size: 13px; cursor: pointer; }
+    .function-option:hover, .function-option:focus-visible { background: #f5f7f5; color: var(--green-dark); }
+    .function-option[aria-current="true"] { font-weight: 600; }
+    .side-note { display: none; }
+    .tool-card { margin-top: 22px; border: 1px solid var(--line); border-radius: 12px; box-shadow: none; }
+    .tool-head { padding: 24px 25px 20px; }
+    .tool-body { padding: 22px 25px 25px; }
+    .tool-kicker { letter-spacing: .08em; }
+    h2 { font-size: 21px; font-weight: 600; }
+    .secure-tag { border-radius: 6px; }
+    .country-select { border-radius: 7px; }
+    .route-result { border-radius: 8px; background: #f6f8f6; border-color: var(--line); }
+    .share-button { border-radius: 7px; }
+    .share-menu { border-radius: 8px; }
+    #menuStatus { min-height: 20px; margin: 8px 0 0; color: var(--muted); font-size: 12px; }
+    footer { margin-top: 70px; }
+
+    @media (max-width: 800px) {
+      .shell { width: calc(100% - 40px); }
+      main { padding-top: 48px; }
+      .hero { grid-template-columns: minmax(0, 1fr) minmax(230px, .75fr); gap: 28px; margin-bottom: 38px; }
+      .hero-art, .hero-image { min-height: 220px; height: 220px; }
+    }
+    @media (max-width: 560px) {
+      .shell { width: calc(100% - 32px); }
+      .site-header { height: 68px; }
+      .header-note { font-size: 11px; }
+      main { padding: 37px 0 52px; }
+      .hero { display: block; margin-bottom: 29px; }
+      h1 { font-size: 40px; margin-top: 16px; }
+      .hero-copy { font-size: 14px; }
+      .hero-art, .hero-image { min-height: 190px; height: 190px; }
+      .hero-art { margin-top: 23px; }
+      .tool-head { padding: 22px 19px 18px; }
+      .tool-body { padding: 20px 19px 22px; }
+      .secure-tag { font-size: 0; padding: 9px; }
+      .route-fields { grid-template-columns: 1fr 38px 1fr; gap: 6px; }
+      .country-select { padding-left: 10px; font-size: 12px; }
+      .swap-button { width: 34px; height: 34px; }
+      .result-footer { align-items: flex-start; flex-direction: column; }
+      .share-area, .share-button { width: 100%; justify-content: center; }
+      .share-menu { width: 100%; }
+      footer { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header shell">
+    <a class="brand" href="#top" aria-label="Finaidvice home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 16.5 10 11l3.2 3.2L20 7.5M14.5 7.5H20v5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      finaidvice
+    </a>
+    <span class="header-note">Small steps. Clearer money decisions.</span>
+  </header>
+
+  <main id="top" class="shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <div class="eyebrow">A little more clarity</div>
+        <h1 id="page-title">Make your next money move <em>clear.</em></h1>
+        <p class="hero-copy">Practical, plain-language guidance for the financial decisions that cross borders. Start with a route and we’ll help you know what to look for.</p>
+      </div>
+      <div class="hero-art">
+        <img class="hero-image" src="./images/final.png" alt="" aria-hidden="true">
+        <span class="hero-image-note">Money in motion</span>
+      </div>
+    </section>
+
+    <section class="workspace" aria-label="Financial tools">
+      <aside class="function-panel">
+        <span class="panel-label">Explore tools</span>
+        <button class="function-toggle" id="functionToggle" type="button" aria-expanded="false" aria-controls="functionMenu">
+          <span class="function-icon" aria-hidden="true">↗</span>
+          <span>Feature 1 · Choose a financial function</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="m3 5 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div id="functionMenu" aria-label="Available financial functions"></div>
+        <p id="menuStatus" role="status" aria-live="polite"></p>
+        <p class="side-note">Simple guides, not financial products. No account or personal details needed.</p>
+      </aside>
+
+      <section class="tool-card" id="toolCard" aria-labelledby="toolTitle" hidden>
+        <div class="tool-head">
+          <div>
+            <div class="tool-kicker">International transfers</div>
+            <h2 id="toolTitle" tabindex="-1">Transfer money internationally with lower fees</h2>
+            <p class="tool-subtitle">Choose where your money is coming from and where it’s going.</p>
+          </div>
+          <span class="secure-tag"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5 13 3.5v4c0 3.2-2.1 5.7-5 7-2.9-1.3-5-3.8-5-7v-4l5-2Z" stroke="currentColor" stroke-width="1.4"/><path d="m5.7 7.8 1.5 1.5 3.2-3.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Independent guide</span>
+        </div>
+        <div class="tool-body">
+          <span class="route-label">Your transfer route</span>
+          <div class="route-fields">
+            <div class="select-wrap">
+              <label for="fromCountry">Sending from</label>
+              <select class="country-select" id="fromCountry" name="fromCountry" autocomplete="country-name" aria-label="Sending from country"></select>
+            </div>
+            <button class="swap-button" id="swapCountries" type="button" aria-label="Swap sending and receiving countries" title="Swap countries">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 5h9m0 0L9.5 2.5M12 5 9.5 7.5M13 11H4m0 0 2.5-2.5M4 11l2.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="select-wrap">
+              <label for="toCountry">Sending to</label>
+              <select class="country-select" id="toCountry" name="toCountry" autocomplete="country-name" aria-label="Sending to country"></select>
+            </div>
+          </div>
+          <section class="route-result" id="routeResult" aria-live="polite" aria-atomic="true" aria-labelledby="resultHeading">
+            <div class="result-topline" id="resultHeading"><span aria-hidden="true">✦</span> Your route tip</div>
+            <p id="tipText"></p>
+            <div class="result-footer">
+              <span class="disclaimer">Guidance only — fees and availability vary by provider. Always check the latest terms.</span>
+              <div class="share-area">
+                <button class="share-button" id="shareToggle" type="button" aria-expanded="false" aria-controls="shareMenu">
+                  Share this tip <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3h7v7M13 3 6.5 9.5M12 9v4H3V4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="share-menu" id="shareMenu" hidden>
+                  <button type="button" id="copyLink">⧉ <span>Copy page link</span></button>
+                  <button type="button" id="nativeShare">↗ <span>Share…</span></button>
+                  <a id="whatsappShare" href="#" target="_blank" rel="noopener noreferrer">◉ <span>WhatsApp</span></a>
+                  <a id="xShare" href="#" target="_blank" rel="noopener noreferrer">𝕏 <span>X</span></a>
+                  <a id="emailShare" href="#">✉ <span>Email</span></a>
+                </div>
+              </div>
+            </div>
+            <div class="status" id="shareStatus" role="status" aria-live="polite"></div>
+          </section>
+          <div class="trust-row" aria-label="How this guide works">
+            <span><svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> No sign-up needed</span>
+            <span><svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> No personal data collected</span>
+            <span><svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Free to use</span>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <p>© <span id="year"></span> Finaidvice. Make informed choices, at your own pace.</p>
+    <p>Educational information only; not financial advice.</p>
+  </footer>
+
+  <script>
+    (() => {
+      const countries = [
+        { code: "AU", name: "Australia", currency: "AUD" },
+        { code: "BR", name: "Brazil", currency: "BRL" },
+        { code: "CA", name: "Canada", currency: "CAD" },
+        { code: "CN", name: "China", currency: "CNY" },
+        { code: "FR", name: "France", currency: "EUR" },
+        { code: "DE", name: "Germany", currency: "EUR" },
+        { code: "GH", name: "Ghana", currency: "GHS" },
+        { code: "IN", name: "India", currency: "INR" },
+        { code: "ID", name: "Indonesia", currency: "IDR" },
+        { code: "IE", name: "Ireland", currency: "EUR" },
+        { code: "IT", name: "Italy", currency: "EUR" },
+        { code: "JP", name: "Japan", currency: "JPY" },
+        { code: "KE", name: "Kenya", currency: "KES" },
+        { code: "MX", name: "Mexico", currency: "MXN" },
+        { code: "NL", name: "Netherlands", currency: "EUR" },
+        { code: "NZ", name: "New Zealand", currency: "NZD" },
+        { code: "NG", name: "Nigeria", currency: "NGN" },
+        { code: "PH", name: "Philippines", currency: "PHP" },
+        { code: "SG", name: "Singapore", currency: "SGD" },
+        { code: "ZA", name: "South Africa", currency: "ZAR" },
+        { code: "ES", name: "Spain", currency: "EUR" },
+        { code: "LK", name: "Sri Lanka", currency: "LKR" },
+        { code: "CH", name: "Switzerland", currency: "CHF" },
+        { code: "TH", name: "Thailand", currency: "THB" },
+        { code: "AE", name: "United Arab Emirates", currency: "AED" },
+        { code: "GB", name: "United Kingdom", currency: "GBP" },
+        { code: "US", name: "United States", currency: "USD" },
+        { code: "VN", name: "Vietnam", currency: "VND" }
+      ];
+      const fromSelect = document.getElementById("fromCountry");
+      const toSelect = document.getElementById("toCountry");
+      const result = document.getElementById("routeResult");
+      const tipText = document.getElementById("tipText");
+      const shareToggle = document.getElementById("shareToggle");
+      const shareMenu = document.getElementById("shareMenu");
+      const shareStatus = document.getElementById("shareStatus");
+
+      function fillSelect(select, selectedCode) {
+        countries.forEach((country) => {
+          const option = document.createElement("option");
+          option.value = country.code;
+          option.textContent = `${country.name} (${country.currency})`;
+          option.selected = country.code === selectedCode;
+          select.append(option);
+        });
+      }
+
+      function updateTip() {
+        const from = countries.find((country) => country.code === fromSelect.value);
+        const to = countries.find((country) => country.code === toSelect.value);
+        if (!from || !to) return;
+
+        let tip;
+        if (from.code === to.code) {
+          tip = `Both ends of this route are in ${from.name}. If you’re moving money between accounts, compare the account transfer terms and check for any maintenance or transaction charges.`;
+        } else if (from.currency === to.currency) {
+          tip = `${from.name} and ${to.name} both use ${from.currency}. Ask providers whether the transfer can stay in that currency from start to finish, and compare the total fee before confirming.`;
+        } else {
+          tip = `For a transfer from ${from.name} (${from.currency}) to ${to.name} (${to.currency}), compare the exchange rate and transfer fee together. Check the recipient amount, delivery time, and whether intermediary-bank charges may apply.`;
+        }
+
+        tipText.textContent = tip;
+        result.classList.add("is-visible");
+        shareStatus.textContent = "";
+        updateShareLinks(from, to, tip);
+      }
+
+      function updateShareLinks(from, to, tip) {
+        const pageUrl = window.location.href.split("#")[0];
+        const message = `Finaidvice tip for ${from.name} to ${to.name}: ${tip} ${pageUrl}`;
+        document.getElementById("whatsappShare").href = `https://wa.me/?text=${encodeURIComponent(message)}`;
+        document.getElementById("xShare").href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`Finaidvice tip for ${from.name} to ${to.name}: ${tip}`)}&url=${encodeURIComponent(pageUrl)}`;
+        document.getElementById("emailShare").href = `mailto:?subject=${encodeURIComponent(`A money transfer tip: ${from.name} to ${to.name}`)}&body=${encodeURIComponent(message)}`;
+      }
+
+      fillSelect(fromSelect, "US");
+      fillSelect(toSelect, "GB");
+      updateTip();
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      fromSelect.addEventListener("change", updateTip);
+      toSelect.addEventListener("change", updateTip);
+      document.getElementById("swapCountries").addEventListener("click", () => {
+        const currentFrom = fromSelect.value;
+        fromSelect.value = toSelect.value;
+        toSelect.value = currentFrom;
+        updateTip();
+      });
+
+      shareToggle.addEventListener("click", () => {
+        const isOpen = shareToggle.getAttribute("aria-expanded") === "true";
+        shareToggle.setAttribute("aria-expanded", String(!isOpen));
+        shareMenu.hidden = isOpen;
+      });
+      document.addEventListener("click", (event) => {
+        if (!event.target.closest(".share-area") && !shareMenu.hidden) {
+          shareMenu.hidden = true;
+          shareToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+      document.getElementById("copyLink").addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(window.location.href.split("#")[0]);
+          shareStatus.textContent = "Page link copied to clipboard.";
+        } catch {
+          shareStatus.textContent = "Copy isn’t available here. You can copy the page address from your browser bar.";
+        }
+      });
+      document.getElementById("nativeShare").addEventListener("click", async () => {
+        if (!navigator.share) {
+          shareStatus.textContent = "Your browser doesn’t support direct sharing. Choose WhatsApp or Email instead.";
+          return;
+        }
+        try {
+          await navigator.share({ title: "Finaidvice transfer tip", text: tipText.textContent, url: window.location.href.split("#")[0] });
+          shareStatus.textContent = "Thanks for sharing.";
+        } catch (error) {
+          if (error.name !== "AbortError") shareStatus.textContent = "Sharing didn’t work. Try copying the page link instead.";
+        }
+      });
+    })();
+  </script>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

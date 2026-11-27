@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f6f7f2">
+  <meta name="theme-color" content="#000000">
   <meta name="description" content="A simple, independent guide to comparing international money transfer routes.">
-  <title>Finaidvice — Make your next move clear</title>
+  <title>Finaidvice — Financial Function</title>
   <style>
     :root {
       color-scheme: light;
@@ -181,229 +181,218 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
     }
+    :root { color-scheme: light; font-family: Arial, Helvetica, sans-serif; color: #000; background: #fff; }
+    body { min-width: 320px; min-height: 100vh; overflow-x: hidden; background: #fff; color: #000; }
+    .shell { max-width: none; width: calc(100% - 40px); }
+    .site-header { height: 165px; justify-content: center; border: 0; }
+    .brand { position: relative; display: inline-flex; min-height: 85px; align-items: center; justify-content: center; padding: 15px 35px; color: #000; font-size: clamp(38px, 6vw, 55px); font-weight: 900; letter-spacing: -.07em; }
+    .brand-mark, .header-note { display: none; }
+    .brand::before, .brand::after { position: absolute; top: 0; width: 35px; height: 85px; border: solid #000; content: ""; }
+    .brand::before { left: 0; border-width: 7px 0 7px 7px; }
+    .brand::after { right: 0; border-width: 7px 7px 7px 0; }
+    .gradient-divider { height: 7px; width: 100%; background: linear-gradient(90deg, #f4d900, #a65adf, #f4d900); background-size: 200% 100%; animation: gradientMove 5s linear infinite; }
+    @keyframes gradientMove { from { background-position: 0 50%; } to { background-position: 200% 50%; } }
+    main { padding: 30px 0 165px; }
+    .hero { display: none; }
+    .workspace { display: flex; align-items: flex-start; justify-content: center; gap: clamp(32px, 7vw, 90px); }
+    .function-panel { min-width: 320px; padding: 0; border: 0; background: transparent; }
+    .panel-label, .side-note { display: none; }
+    .function-toggle { display: block; min-width: 100%; padding: 10px 20px; border: 0; border-right: 2px solid #000; border-left: 2px solid #000; border-radius: 0; background: #fff; color: #000; text-align: left; font-size: 35px; font-weight: 400; line-height: 1.4; }
+    .function-toggle:hover { background: #fff; }
+    .function-toggle svg, .function-icon { display: none; }
+    .function-menu { max-width: 320px; padding-top: 8px; }
+    .function-option { width: 100%; padding: 10px 12px; border: 0; border-bottom: 1px solid #e8e8e8; border-radius: 0; background: #fff; color: #000; text-align: left; font-size: 14px; }
+    .function-option:hover, .function-option:focus-visible { background: #faf8fc; color: #000; }
+    #menuStatus { min-height: 20px; margin: 8px 0 0; color: #000; font-size: 12px; }
+    .share-area { position: relative; min-width: 290px; }
+    .share-button { display: flex; flex-direction: column; align-items: flex-start; min-width: 290px; padding: 20px 30px; border: 0; border-right: 7px solid #000; border-left: 7px solid #000; border-radius: 0; background: #fff; color: #000; text-align: left; font-size: 36px; font-weight: 900; line-height: 1.2; }
+    .share-button:hover { background: #fff; }
+    .share-check { display: block; margin-top: 5px; font-size: 35px; }
+    .share-menu { position: absolute; z-index: 5; top: calc(100% + 10px); right: auto; left: 0; width: 100%; padding: 7px; border: 1px solid #000; border-radius: 0; background: #fff; box-shadow: none; }
+    .share-menu[hidden] { display: none; }
+    .share-menu button, .share-menu a { display: flex; width: 100%; gap: 9px; padding: 10px; border: 0; border-radius: 0; background: #fff; color: #000; text-align: left; text-decoration: none; font-size: 13px; }
+    .share-menu button:hover, .share-menu a:hover { background: #f7f4fa; }
+    .status { min-height: 17px; margin-top: 10px; color: #000; font-size: 12px; }
+    .tool-card { margin-top: 36px; border: 1px solid #d8d8d8; border-radius: 0; box-shadow: none; }
+    .tool-card[hidden] { display: none; }
+    .tool-head { padding: 24px 26px 20px; }
+    .tool-kicker { color: #000; }
+    h2 { font-size: 22px; font-weight: 600; }
+    .tool-subtitle { color: #333; }
+    .secure-tag { border-color: #ddd; border-radius: 0; color: #222; }
+    .secure-tag svg { color: #000; }
+    .tool-body { border-top-color: #e8e8e8; padding: 22px 26px 25px; }
+    .route-label, .select-wrap label { color: #222; }
+    .route-fields { grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr); gap: 12px; }
+    .country-select { height: 46px; padding: 0 35px 0 12px; border: 1px solid #999; border-radius: 0; color: #000; }
+    .country-select:focus-visible { border-color: #9654d8; box-shadow: 0 0 0 3px rgba(150, 84, 216, .2); }
+    .swap-button { width: 38px; height: 38px; border-color: #999; border-radius: 50%; background: #fff; color: #000; }
+    .swap-button:hover { background: #faf8fc; }
+    .route-result, .route-result.is-visible { border: 1px solid #ddd; border-radius: 0; background: #fff; }
+    .result-topline, .route-result p { color: #000; }
+    .disclaimer { color: #444; }
+    .trust-row, .trust-row svg { color: #222; }
+    footer { margin-top: 0; padding: 20px 0 26px; border-top: 0; color: #333; }
+    .wave-container { position: fixed; z-index: 0; right: 0; bottom: 0; left: 0; height: 110px; overflow: hidden; pointer-events: none; }
+    .wave { position: absolute; bottom: 0; left: 0; width: 200%; height: 100%; }
+    .wave svg { display: block; width: 100%; height: 100%; }
+    .wave-one { animation: waveMove 9s linear infinite; }
+    .wave-two { bottom: -12px; animation: waveMove 13s linear infinite reverse; }
+    @keyframes waveMove { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .function-toggle:focus-visible, .share-button:focus-visible, .function-option:focus-visible, .swap-button:focus-visible { outline: 3px solid #9654d8; outline-offset: 4px; }
+    @media (max-width: 650px) {
+      .site-header { height: 135px; }
+      .brand { min-height: 75px; font-size: 42px; }
+      .brand::before, .brand::after { height: 75px; }
+      main { padding: 35px 0 145px; }
+      .workspace { flex-direction: column; align-items: center; gap: 35px; }
+      .share-area, .share-button { min-width: 260px; }
+      .share-area { width: auto; }
+      .share-button { width: auto; justify-content: flex-start; font-size: 30px; }
+      .function-panel { min-width: 260px; }
+      .function-toggle { font-size: 28px; }
+      .function-menu { max-width: 260px; }
+      .wave-container { height: 75px; }
+      .tool-head { padding: 20px 17px 17px; }
+      .tool-body { padding: 18px 17px 20px; }
+      .route-fields { grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr); gap: 6px; }
+      .country-select { padding-left: 8px; font-size: 12px; }
+      .swap-button { width: 32px; height: 32px; }
+      .result-footer { align-items: flex-start; flex-direction: column; }
+      footer { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+    :root { color-scheme: light; color: #111; background: #fff; }
+    body {
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+      color: #111;
+    }
+    .site-header {
+      position: relative;
+      height: 210px;
+      justify-content: flex-end;
+      overflow: hidden;
+      background-color: #000;
+      background-image: radial-gradient(1px 1px at 18px 24px, rgba(255,255,255,.55) 0, transparent 1.5px), radial-gradient(1px 1px at 78px 96px, rgba(207,181,255,.5) 0, transparent 1.5px), radial-gradient(1px 1px at 142px 42px, rgba(255,255,255,.35) 0, transparent 1.5px);
+      background-size: 180px 140px;
+    }
+    .space-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 54%; }
+    .gradient-divider { height: 4px; background: linear-gradient(90deg, #e8c900, #9654d8, #e8c900); }
+    main { flex: 1; padding: 4px 0 20px; }
+    .brand { display: inline-block; margin: 0 0 28px; padding: 0; color: #111; font-size: clamp(18px, 2vw, 24px); font-weight: 600; letter-spacing: -.04em; text-decoration: none; }
+    .brand::before, .brand::after { display: none; }
+    .workspace { display: grid; width: min(100%, 840px); grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: clamp(36px, 7vw, 90px); margin: 12px auto 0; }
+    .share-area { min-width: 0; color: #111; }
+    .feature-heading { margin: 0 0 22px; color: #111; font-size: clamp(25px, 3vw, 34px); font-weight: 600; }
+    .feature-toggle { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; padding: 12px 22px; border: 1px solid #171717; border-radius: 8px; background: #171717; box-shadow: 0 3px 0 #e8c900; color: #fff; text-align: center; font: inherit; font-size: clamp(18px, 2.1vw, 22px); font-weight: 700; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
+    .feature-toggle:hover { transform: translateY(-1px); background: #303030; box-shadow: 0 4px 0 #9654d8; color: #fff; }
+    .feature-toggle[aria-expanded="true"] { box-shadow: 0 3px 0 #9654d8; }
+    .share-area { transform: none; }
+    .share-toggle { display: flex; min-width: 220px; margin-inline: auto; }
+    .share-actions { display: grid; justify-items: center; gap: 12px; }
+    .share-actions[hidden] { display: none; }
+    .share-action { width: fit-content; max-width: 100%; padding: 9px 12px; border: 1px solid #d5d5d5; border-radius: 6px; background: #fff; color: #222; text-align: left; text-decoration: none; font-size: 14px; cursor: pointer; transition: background .18s ease, border-color .18s ease; }
+    .share-action:hover { border-color: #9654d8; background: #f7f4fa; color: #111; text-decoration: none; }
+    .share-hint { max-width: 260px; margin: 10px auto 0; color: #666; text-align: center; font-size: 13px; line-height: 1.65; }
+    .share-action:focus-visible, .feature-toggle:focus-visible, .function-toggle:focus-visible, .function-option:focus-visible, .swap-button:focus-visible, .country-select:focus-visible { outline: 2px solid #555; outline-offset: 4px; }
+    .social-label { margin: 6px 0 0; color: #333; font-size: 14px; }
+    .social-links { display: flex; flex-wrap: wrap; gap: 18px; }
+    .status { color: #333; }
+    .function-panel { min-width: 0; padding-left: 0; color: #111; }
+    .function-toggle { display: inline-flex; width: auto; min-width: 240px; min-height: 52px; align-items: center; justify-content: center; padding: 12px 22px; border: 1px solid #171717; border-radius: 8px; background: #171717; box-shadow: 0 3px 0 #e8c900; color: #fff; font-size: clamp(18px, 2.1vw, 22px); font-weight: 700; line-height: 1.2; text-align: center; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
+    .function-toggle:hover { transform: translateY(-1px); background: #303030; box-shadow: 0 4px 0 #9654d8; color: #fff; }
+    .function-toggle[aria-expanded="true"] { box-shadow: 0 3px 0 #9654d8; }
+    .function-menu { max-width: 430px; padding-top: 10px; }
+    .function-option { padding: 13px 14px; border: 1px solid #d5d5d5; border-radius: 8px; background: #fff; box-shadow: 0 2px 0 rgba(0,0,0,.06); color: #222; font-size: 14px; }
+    .function-option:hover, .function-option:focus-visible { border-color: #9654d8; background: #f7f4fa; color: #111; }
+    #menuStatus { display: none; }
+    .tool-card { border-color: #ddd; background: #fff; color: #111; }
+    .tool-head, .tool-body { color: inherit; }
+    .tool-kicker, .route-label, .select-wrap label, h2, .result-topline, .route-result p { color: #111; }
+    .tool-subtitle, .disclaimer { color: #444; }
+    .secure-tag { border-color: #ddd; color: #333; }
+    .secure-tag svg { color: #69458a; }
+    .tool-body { border-top-color: #e8e8e8; }
+    .country-select { border-color: #999; background-color: #fff; color: #111; color-scheme: light; }
+    .swap-button { border-color: #999; background: #fff; color: #111; }
+    .route-result, .route-result.is-visible { border-color: #ddd; background: #fafafa; }
+    .trust-row, .trust-row svg { color: #444; }
+    footer { position: relative; padding: 14px 0 20px; color: #222; font-size: 12px; }
+    .copyright-note, .education-note { color: #222; }
+    .copyright-note { margin-left: 0; }
+    .education-note { margin-right: 0; }
+    .wave-container { position: relative; z-index: 0; flex: 0 0 76px; height: 76px; overflow: hidden; pointer-events: none; }
+    @media (max-width: 650px) {
+      .site-header { height: 165px; }
+      .brand { margin-bottom: 24px; }
+      .workspace { grid-template-columns: 1fr; gap: 32px; margin-top: 12px; }
+      .share-area { transform: none; text-align: center; }
+      .function-panel { display: grid; width: 100%; justify-items: center; padding-left: 0; text-align: center; }
+      .function-menu { width: min(100%, 430px); text-align: left; }
+      .wave-container { height: 58px; }
+      main { padding-bottom: 20px; }
+      footer { flex-direction: column; padding: 14px 0 18px; }
+    }
   </style>
 </head>
 <body>
-  <header class="site-header shell">
-    <a class="brand" href="#top" aria-label="Finaidvice home">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M5 16.5 10 11l3.2 3.2L20 7.5M14.5 7.5H20v5.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
-      finaidvice
-    </a>
-    <span class="header-note">Small steps. Clearer money decisions.</span>
+  <header class="site-header">
+    <img class="space-art" src="./images/final.png" alt="Abstract yellow and purple planet in space">
   </header>
+  <div class="gradient-divider" aria-hidden="true"></div>
 
   <main id="top" class="shell">
-    <section class="hero" aria-labelledby="page-title">
-      <div>
-        <div class="eyebrow">A little more clarity</div>
-        <h1 id="page-title">Make your next money move <em>clear.</em></h1>
-        <p class="hero-copy">Practical, plain-language guidance for the financial decisions that cross borders. Start with a route and we’ll help you know what to look for.</p>
-      </div>
-      <div class="hero-art">
-        <img class="hero-image" src="./images/final.png" alt="" aria-hidden="true">
-        <span class="hero-image-note">Money in motion</span>
-      </div>
-    </section>
-
+    <a class="brand" href="#top" aria-label="Finaidvice home">Finaidvice</a>
     <section class="workspace" aria-label="Financial tools">
-      <aside class="function-panel">
-        <span class="panel-label">Explore tools</span>
-        <button class="function-toggle" id="functionToggle" type="button" aria-expanded="false" aria-controls="functionMenu">
-          <span class="function-icon" aria-hidden="true">↗</span>
-          <span>Feature 1 · Choose a financial function</span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="m3 5 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div id="functionMenu" aria-label="Available financial functions"></div>
-        <p id="menuStatus" role="status" aria-live="polite"></p>
-        <p class="side-note">Simple guides, not financial products. No account or personal details needed.</p>
-      </aside>
-
-      <section class="tool-card" id="toolCard" aria-labelledby="toolTitle" hidden>
-        <div class="tool-head">
-          <div>
-            <div class="tool-kicker">International transfers</div>
-            <h2 id="toolTitle" tabindex="-1">Transfer money internationally with lower fees</h2>
-            <p class="tool-subtitle">Choose where your money is coming from and where it’s going.</p>
+      <section class="share-area" aria-labelledby="shareHeading">
+        <h1 class="feature-heading" id="shareHeading">
+          <button class="feature-toggle share-toggle" id="shareToggle" type="button" aria-expanded="false" aria-controls="shareActions">Share</button>
+        </h1>
+        <p class="share-hint">Share this website to family or a friend<br>Copy link<br>Share on all social medias</p>
+        <div class="share-actions" id="shareActions" hidden>
+          <button class="share-action" type="button" id="nativeShare">Share this website to family or a friend</button>
+          <button class="share-action" type="button" id="copyLink">Copy link</button>
+          <p class="social-label">Share on all social medias</p>
+          <div class="social-links">
+            <a class="share-action" id="whatsappShare" href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a class="share-action" id="xShare" href="#" target="_blank" rel="noopener noreferrer">X</a>
+            <a class="share-action" id="emailShare" href="#">Email</a>
           </div>
-          <span class="secure-tag"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5 13 3.5v4c0 3.2-2.1 5.7-5 7-2.9-1.3-5-3.8-5-7v-4l5-2Z" stroke="currentColor" stroke-width="1.4"/><path d="m5.7 7.8 1.5 1.5 3.2-3.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Independent guide</span>
-        </div>
-        <div class="tool-body">
-          <span class="route-label">Your transfer route</span>
-          <div class="route-fields">
-            <div class="select-wrap">
-              <label for="fromCountry">Sending from</label>
-              <select class="country-select" id="fromCountry" name="fromCountry" autocomplete="country-name" aria-label="Sending from country"></select>
-            </div>
-            <button class="swap-button" id="swapCountries" type="button" aria-label="Swap sending and receiving countries" title="Swap countries">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 5h9m0 0L9.5 2.5M12 5 9.5 7.5M13 11H4m0 0 2.5-2.5M4 11l2.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <div class="select-wrap">
-              <label for="toCountry">Sending to</label>
-              <select class="country-select" id="toCountry" name="toCountry" autocomplete="country-name" aria-label="Sending to country"></select>
-            </div>
-          </div>
-          <section class="route-result" id="routeResult" aria-live="polite" aria-atomic="true" aria-labelledby="resultHeading">
-            <div class="result-topline" id="resultHeading"><span aria-hidden="true">✦</span> Your route tip</div>
-            <p id="tipText"></p>
-            <div class="result-footer">
-              <span class="disclaimer">Guidance only — fees and availability vary by provider. Always check the latest terms.</span>
-              <div class="share-area">
-                <button class="share-button" id="shareToggle" type="button" aria-expanded="false" aria-controls="shareMenu">
-                  Share this tip <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3h7v7M13 3 6.5 9.5M12 9v4H3V4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
-                <div class="share-menu" id="shareMenu" hidden>
-                  <button type="button" id="copyLink">⧉ <span>Copy page link</span></button>
-                  <button type="button" id="nativeShare">↗ <span>Share…</span></button>
-                  <a id="whatsappShare" href="#" target="_blank" rel="noopener noreferrer">◉ <span>WhatsApp</span></a>
-                  <a id="xShare" href="#" target="_blank" rel="noopener noreferrer">𝕏 <span>X</span></a>
-                  <a id="emailShare" href="#">✉ <span>Email</span></a>
-                </div>
-              </div>
-            </div>
-            <div class="status" id="shareStatus" role="status" aria-live="polite"></div>
-          </section>
-          <div class="trust-row" aria-label="How this guide works">
-            <span><svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> No sign-up needed</span>
-            <span><svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> No personal data collected</span>
-            <span><svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3 8 3 3 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Free to use</span>
-          </div>
+          <div class="status" id="shareStatus" role="status" aria-live="polite"></div>
         </div>
       </section>
+      <aside class="function-panel">
+        <button class="function-toggle" id="functionToggle" type="button" aria-expanded="false" aria-controls="functionMenu">
+          Financial function
+        </button>
+        <div id="functionMenu" aria-label="Available financial functions"></div>
+      </aside>
     </section>
+
   </main>
 
+  <div class="wave-container" aria-hidden="true">
+    <div class="wave wave-one">
+      <svg viewBox="0 0 2880 120" preserveAspectRatio="none">
+        <path d="M0 55 Q180 5 360 55 T720 55 T1080 55 T1440 55 T1800 55 T2160 55 T2520 55 T2880 55" fill="none" stroke="#E8C900" stroke-width="5"/>
+      </svg>
+    </div>
+    <div class="wave wave-two">
+      <svg viewBox="0 0 2880 120" preserveAspectRatio="none">
+        <path d="M0 75 Q180 25 360 75 T720 75 T1080 75 T1440 75 T1800 75 T2160 75 T2520 75 T2880 75" fill="none" stroke="#9654D8" stroke-width="5"/>
+      </svg>
+    </div>
+  </div>
   <footer class="shell">
-    <p>© <span id="year"></span> Finaidvice. Make informed choices, at your own pace.</p>
-    <p>Educational information only; not financial advice.</p>
+    <p class="copyright-note">© <span id="year"></span> Finaidvice. Make informed choices, at your own pace.</p>
+    <p class="education-note">Educational information only; not financial advice.</p>
   </footer>
 
-  <script>
-    (() => {
-      const countries = [
-        { code: "AU", name: "Australia", currency: "AUD" },
-        { code: "BR", name: "Brazil", currency: "BRL" },
-        { code: "CA", name: "Canada", currency: "CAD" },
-        { code: "CN", name: "China", currency: "CNY" },
-        { code: "FR", name: "France", currency: "EUR" },
-        { code: "DE", name: "Germany", currency: "EUR" },
-        { code: "GH", name: "Ghana", currency: "GHS" },
-        { code: "IN", name: "India", currency: "INR" },
-        { code: "ID", name: "Indonesia", currency: "IDR" },
-        { code: "IE", name: "Ireland", currency: "EUR" },
-        { code: "IT", name: "Italy", currency: "EUR" },
-        { code: "JP", name: "Japan", currency: "JPY" },
-        { code: "KE", name: "Kenya", currency: "KES" },
-        { code: "MX", name: "Mexico", currency: "MXN" },
-        { code: "NL", name: "Netherlands", currency: "EUR" },
-        { code: "NZ", name: "New Zealand", currency: "NZD" },
-        { code: "NG", name: "Nigeria", currency: "NGN" },
-        { code: "PH", name: "Philippines", currency: "PHP" },
-        { code: "SG", name: "Singapore", currency: "SGD" },
-        { code: "ZA", name: "South Africa", currency: "ZAR" },
-        { code: "ES", name: "Spain", currency: "EUR" },
-        { code: "LK", name: "Sri Lanka", currency: "LKR" },
-        { code: "CH", name: "Switzerland", currency: "CHF" },
-        { code: "TH", name: "Thailand", currency: "THB" },
-        { code: "AE", name: "United Arab Emirates", currency: "AED" },
-        { code: "GB", name: "United Kingdom", currency: "GBP" },
-        { code: "US", name: "United States", currency: "USD" },
-        { code: "VN", name: "Vietnam", currency: "VND" }
-      ];
-      const fromSelect = document.getElementById("fromCountry");
-      const toSelect = document.getElementById("toCountry");
-      const result = document.getElementById("routeResult");
-      const tipText = document.getElementById("tipText");
-      const shareToggle = document.getElementById("shareToggle");
-      const shareMenu = document.getElementById("shareMenu");
-      const shareStatus = document.getElementById("shareStatus");
-
-      function fillSelect(select, selectedCode) {
-        countries.forEach((country) => {
-          const option = document.createElement("option");
-          option.value = country.code;
-          option.textContent = `${country.name} (${country.currency})`;
-          option.selected = country.code === selectedCode;
-          select.append(option);
-        });
-      }
-
-      function updateTip() {
-        const from = countries.find((country) => country.code === fromSelect.value);
-        const to = countries.find((country) => country.code === toSelect.value);
-        if (!from || !to) return;
-
-        let tip;
-        if (from.code === to.code) {
-          tip = `Both ends of this route are in ${from.name}. If you’re moving money between accounts, compare the account transfer terms and check for any maintenance or transaction charges.`;
-        } else if (from.currency === to.currency) {
-          tip = `${from.name} and ${to.name} both use ${from.currency}. Ask providers whether the transfer can stay in that currency from start to finish, and compare the total fee before confirming.`;
-        } else {
-          tip = `For a transfer from ${from.name} (${from.currency}) to ${to.name} (${to.currency}), compare the exchange rate and transfer fee together. Check the recipient amount, delivery time, and whether intermediary-bank charges may apply.`;
-        }
-
-        tipText.textContent = tip;
-        result.classList.add("is-visible");
-        shareStatus.textContent = "";
-        updateShareLinks(from, to, tip);
-      }
-
-      function updateShareLinks(from, to, tip) {
-        const pageUrl = window.location.href.split("#")[0];
-        const message = `Finaidvice tip for ${from.name} to ${to.name}: ${tip} ${pageUrl}`;
-        document.getElementById("whatsappShare").href = `https://wa.me/?text=${encodeURIComponent(message)}`;
-        document.getElementById("xShare").href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`Finaidvice tip for ${from.name} to ${to.name}: ${tip}`)}&url=${encodeURIComponent(pageUrl)}`;
-        document.getElementById("emailShare").href = `mailto:?subject=${encodeURIComponent(`A money transfer tip: ${from.name} to ${to.name}`)}&body=${encodeURIComponent(message)}`;
-      }
-
-      fillSelect(fromSelect, "US");
-      fillSelect(toSelect, "GB");
-      updateTip();
-      document.getElementById("year").textContent = new Date().getFullYear();
-
-      fromSelect.addEventListener("change", updateTip);
-      toSelect.addEventListener("change", updateTip);
-      document.getElementById("swapCountries").addEventListener("click", () => {
-        const currentFrom = fromSelect.value;
-        fromSelect.value = toSelect.value;
-        toSelect.value = currentFrom;
-        updateTip();
-      });
-
-      shareToggle.addEventListener("click", () => {
-        const isOpen = shareToggle.getAttribute("aria-expanded") === "true";
-        shareToggle.setAttribute("aria-expanded", String(!isOpen));
-        shareMenu.hidden = isOpen;
-      });
-      document.addEventListener("click", (event) => {
-        if (!event.target.closest(".share-area") && !shareMenu.hidden) {
-          shareMenu.hidden = true;
-          shareToggle.setAttribute("aria-expanded", "false");
-        }
-      });
-      document.getElementById("copyLink").addEventListener("click", async () => {
-        try {
-          await navigator.clipboard.writeText(window.location.href.split("#")[0]);
-          shareStatus.textContent = "Page link copied to clipboard.";
-        } catch {
-          shareStatus.textContent = "Copy isn’t available here. You can copy the page address from your browser bar.";
-        }
-      });
-      document.getElementById("nativeShare").addEventListener("click", async () => {
-        if (!navigator.share) {
-          shareStatus.textContent = "Your browser doesn’t support direct sharing. Choose WhatsApp or Email instead.";
-          return;
-        }
-        try {
-          await navigator.share({ title: "Finaidvice transfer tip", text: tipText.textContent, url: window.location.href.split("#")[0] });
-          shareStatus.textContent = "Thanks for sharing.";
-        } catch (error) {
-          if (error.name !== "AbortError") shareStatus.textContent = "Sharing didn’t work. Try copying the page link instead.";
-        }
-      });
-    })();
-  </script>
+  <script type="module" src="/src/share.js"></script>
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>

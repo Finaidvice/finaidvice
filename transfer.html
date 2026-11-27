@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Choose two countries to get a practical international money transfer checklist.">
+  <title>International transfer guide — Finaidvice</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #171717;
+      background: #fff;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    * { box-sizing: border-box; }
+    body { display: grid; min-width: 320px; min-height: 100vh; margin: 0; padding: 32px 20px; place-items: center; }
+    button, select { font: inherit; }
+    button { cursor: pointer; }
+    .tool { width: min(100%, 660px); }
+    h1 { margin: 0 0 10px; font-size: clamp(24px, 4vw, 32px); font-weight: 600; letter-spacing: -.045em; }
+    .intro { margin: 0 0 34px; color: #555; font-size: 15px; line-height: 1.65; }
+    .route-label { display: block; margin-bottom: 12px; color: #444; font-size: 13px; font-weight: 700; }
+    .route-fields { display: grid; grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr); gap: 12px; align-items: end; }
+    .select-wrap { min-width: 0; }
+    .select-wrap label { display: block; margin-bottom: 8px; color: #555; font-size: 13px; }
+    .country-select { width: 100%; height: 48px; padding: 0 32px 0 12px; border: 1px solid #bdbdbd; border-radius: 4px; background: #fff; color: #171717; }
+    .country-select:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid #9a55d8; outline-offset: 3px; }
+    .swap-button { display: grid; width: 38px; height: 38px; margin: 0 auto 5px; place-items: center; border: 1px solid #bdbdbd; border-radius: 50%; background: #fff; color: #171717; transition: transform .2s ease; }
+    .swap-button:hover { transform: rotate(180deg); }
+    .route-result { margin-top: 24px; padding: 20px; border: 1px solid #dedede; background: #fafafa; animation: appear .24s ease-out; }
+    .result-topline { font-size: 13px; font-weight: 700; }
+    .tip { margin: 12px 0 18px; color: #333; font-size: 15px; line-height: 1.7; }
+    .result-footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .disclaimer { max-width: 360px; color: #666; font-size: 12px; line-height: 1.55; }
+    .share-area { position: relative; flex: 0 0 auto; }
+    .share-toggle { min-height: 42px; padding: 0 18px; border: 0; border-radius: 4px; background: #171717; color: #fff; font-size: 14px; font-weight: 700; }
+    .share-toggle:hover { background: #444; }
+    .share-menu { position: absolute; z-index: 1; top: calc(100% + 8px); right: 0; width: 210px; padding: 6px; border: 1px solid #ddd; background: #fff; box-shadow: 0 8px 26px rgba(0,0,0,.12); }
+    .share-menu[hidden] { display: none; }
+    .share-menu button, .share-menu a { display: block; width: 100%; padding: 10px; border: 0; background: #fff; color: #222; text-align: left; text-decoration: none; font-size: 13px; }
+    .share-menu button:hover, .share-menu a:hover { background: #f5f5f5; }
+    .status { min-height: 18px; margin: 10px 0 0; color: #444; font-size: 12px; }
+    @keyframes appear { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 520px) {
+      body { padding: 24px 16px; }
+      .intro { margin-bottom: 28px; }
+      .route-fields { grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr); gap: 6px; }
+      .country-select { padding-left: 8px; font-size: 12px; }
+      .swap-button { width: 32px; height: 32px; }
+      .result-footer { align-items: flex-start; flex-direction: column; }
+      .share-area, .share-toggle { width: 100%; }
+      .share-menu { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="tool">
+    <h1>Transfer money internationally with lower fees</h1>
+    <p class="intro">Choose the countries your money is moving between for a practical checklist to help compare transfer options.</p>
+    <span class="route-label">Your transfer route</span>
+    <div class="route-fields">
+      <div class="select-wrap">
+        <label for="fromCountry">Sending from</label>
+        <select class="country-select" id="fromCountry" name="fromCountry" autocomplete="country-name"></select>
+      </div>
+      <button class="swap-button" id="swapCountries" type="button" aria-label="Swap sending and receiving countries" title="Swap countries">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 5h9m0 0L9.5 2.5M12 5 9.5 7.5M13 11H4m0 0 2.5-2.5M4 11l2.5 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="select-wrap">
+        <label for="toCountry">Sending to</label>
+        <select class="country-select" id="toCountry" name="toCountry" autocomplete="country-name"></select>
+      </div>
+    </div>
+    <section class="route-result" id="routeResult" aria-live="polite" aria-atomic="true" aria-labelledby="resultHeading">
+      <div class="result-topline" id="resultHeading">Your route tip</div>
+      <p class="tip" id="tipText"></p>
+      <div class="result-footer">
+        <span class="disclaimer">Guidance only — fees and availability vary by provider. Always check the latest terms.</span>
+        <div class="share-area">
+          <button class="share-toggle" id="shareToggle" type="button" aria-expanded="false" aria-controls="shareMenu">Share</button>
+          <div class="share-menu" id="shareMenu" hidden>
+            <button type="button" id="nativeShare">Share this tip</button>
+            <button type="button" id="copyLink">Copy link</button>
+            <a id="whatsappShare" href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a id="xShare" href="#" target="_blank" rel="noopener noreferrer">X</a>
+            <a id="emailShare" href="#">Email</a>
+          </div>
+        </div>
+      </div>
+      <p class="status" id="shareStatus" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <script type="module" src="/src/transfer.js"></script>
+</body>
+</html>

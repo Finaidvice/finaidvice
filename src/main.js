@@ -2,9 +2,7 @@ import { Component, RenderContext, callback } from "@liquefy/cascade.component";
 import { DOMElementTarget, animationContainer, button, text } from "@liquefy/cascade.dom";
 
 const options = [
-  { id: "transfer", title: "Transfer money internationally with lower fees" },
-  { id: "travel", title: "Plan a travel budget" },
-  { id: "savings", title: "Build an emergency fund" }
+  { id: "transfer", title: "Find most efficient ways to send money internationally." }
 ];
 
 class FunctionMenu extends Component {
@@ -21,12 +19,7 @@ class FunctionMenu extends Component {
     this.open = false;
     document.getElementById("functionToggle").setAttribute("aria-expanded", "false");
     if (option.id === "transfer") {
-      document.getElementById("menuStatus").textContent = "";
-      document.getElementById("toolCard").hidden = false;
-      document.getElementById("toolTitle").focus({ preventScroll: true });
-      document.getElementById("toolCard").scrollIntoView({ behavior: "smooth", block: "nearest" });
-    } else {
-      document.getElementById("menuStatus").textContent = `${option.title} is coming soon.`;
+      window.location.assign(new URL("transfer.html", window.location.href));
     }
   }
 

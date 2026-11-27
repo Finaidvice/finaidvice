@@ -8,7 +8,7 @@ Install the project dependencies, then run `npm run dev`. The site uses the Casc
 
 ## Deploy or move to another host
 
-Pushing to `main` builds and deploys the site to GitHub Pages at [https://finaidvice.github.io/finaidvice/](https://finaidvice.github.io/finaidvice/). To deploy elsewhere, run `npm run build` and copy the contents of `dist/` to the host's public web directory. The generated site is static and portable; the destination host does not need Node.js or a server runtime.
+Set the repository's Pages source to **GitHub Actions** in Settings → Pages. Pushing to `main` then builds and deploys the site to [https://finaidvice.github.io/finaidvice/](https://finaidvice.github.io/finaidvice/). To deploy elsewhere, run `npm run build` and copy the contents of `dist/` to the host's public web directory. The generated site is static and portable; the destination host does not need Node.js or a server runtime.
 
 ## Current features
 

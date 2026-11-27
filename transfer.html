@@ -29,21 +29,21 @@
     .select-wrap { min-width: 0; }
     .select-wrap label { display: block; margin-bottom: 8px; color: #555; font-size: 13px; }
     .country-select { width: 100%; height: 48px; padding: 0 32px 0 12px; border: 1px solid #bdbdbd; border-radius: 4px; background: #fff; color: #171717; }
-    .country-select:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid #9a55d8; outline-offset: 3px; }
-    .swap-button { display: grid; width: 38px; height: 38px; margin: 0 auto 5px; place-items: center; border: 1px solid #bdbdbd; border-radius: 50%; background: #fff; color: #171717; transition: transform .2s ease; }
-    .swap-button:hover { transform: rotate(180deg); }
+    .country-select:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid #4b9fc5; outline-offset: 3px; }
+    .swap-button { display: grid; width: 36px; height: 36px; margin: 0 auto 6px; place-items: center; border: 1px solid #c9e4f1; border-radius: 50%; background: #edf8fd; color: #18394a; transition: transform .2s ease, background .2s ease; }
+    .swap-button:hover { transform: rotate(180deg); background: #e0f2fb; }
     .route-result { margin-top: 24px; padding: 20px; border: 1px solid #dedede; background: #fafafa; animation: appear .24s ease-out; }
     .result-topline { font-size: 13px; font-weight: 700; }
     .tip { margin: 12px 0 18px; color: #333; font-size: 15px; line-height: 1.7; }
     .result-footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
     .disclaimer { max-width: 360px; color: #666; font-size: 12px; line-height: 1.55; }
     .share-area { position: relative; flex: 0 0 auto; }
-    .share-toggle { min-height: 42px; padding: 0 18px; border: 0; border-radius: 4px; background: #171717; color: #fff; font-size: 14px; font-weight: 700; }
-    .share-toggle:hover { background: #444; }
+    .share-toggle { min-height: 38px; padding: 0 16px; border: 1px solid #b9deef; border-radius: 4px; background: #e4f4fc; color: #18394a; font-size: 13px; font-weight: 700; transition: background .18s ease; }
+    .share-toggle:hover { background: #d3edfa; }
     .share-menu { position: absolute; z-index: 1; top: calc(100% + 8px); right: 0; width: 210px; padding: 6px; border: 1px solid #ddd; background: #fff; box-shadow: 0 8px 26px rgba(0,0,0,.12); }
     .share-menu[hidden] { display: none; }
-    .share-menu button, .share-menu a { display: block; width: 100%; padding: 10px; border: 0; background: #fff; color: #222; text-align: left; text-decoration: none; font-size: 13px; }
-    .share-menu button:hover, .share-menu a:hover { background: #f5f5f5; }
+    .share-menu button, .share-menu a { display: block; width: 100%; margin-bottom: 4px; padding: 8px 10px; border: 1px solid #d5e9f4; border-radius: 4px; background: #edf8fd; color: #18394a; text-align: left; text-decoration: none; font-size: 12px; }
+    .share-menu button:hover, .share-menu a:hover { background: #e0f2fb; }
     .status { min-height: 18px; margin: 10px 0 0; color: #444; font-size: 12px; }
     @keyframes appear { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
     @media (max-width: 520px) {

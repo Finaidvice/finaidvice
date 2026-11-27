@@ -5,6 +5,9 @@
 - Ask whether an intermediary or receiving bank may deduct a fee.
 - Confirm the delivery estimate and whether it depends on the payment method.
 - Test
+- test
+- test
+- test
 
 ## Illustrative fee path
 

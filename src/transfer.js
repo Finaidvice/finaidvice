@@ -125,7 +125,8 @@ function updateTip() {
   }
 
   const routeKey = `${from.code}-${to.code}`;
-  const routeMarkdown = routeGuidance[routeKey];
+  const currencyPairKey = `${from.currency}-${to.currency}`;
+  const routeMarkdown = routeGuidance[routeKey] ?? routeGuidance[currencyPairKey];
   tipText.textContent = tip;
   routeContent.dataset.route = routeKey;
   routeContent.innerHTML = routeMarkdown ? markdown.render(routeMarkdown) : "";

@@ -292,9 +292,11 @@
     .feature-toggle:hover { transform: translateY(-1px); background: #d3edfa; box-shadow: 0 4px 10px rgba(42, 119, 158, .16); color: #18394a; }
     .feature-toggle[aria-expanded="true"] { background: #d3edfa; }
     .share-area { transform: none; }
-    .share-toggle { display: flex; min-width: 200px; margin-inline: auto; }
+    .share-toggle { display: flex; width: fit-content; min-width: 200px; margin-inline: auto; }
     .share-actions { display: grid; justify-items: center; gap: 12px; }
     .share-actions[hidden] { display: none; }
+    .share-actions:not([hidden]) { animation: share-dropdown-in .2s ease-out both; transform-origin: top center; }
+    @keyframes share-dropdown-in { from { opacity: 0; transform: translateY(-8px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
     .share-action { width: fit-content; max-width: 100%; padding: 7px 10px; border: 1px solid #c9e4f1; border-radius: 6px; background: #edf8fd; color: #18394a; text-align: left; text-decoration: none; font-size: 13px; cursor: pointer; transition: background .18s ease, border-color .18s ease; }
     .share-action:hover { border-color: #9dcfe7; background: #e0f2fb; color: #18394a; text-decoration: none; }
     .share-hint { max-width: 260px; margin: 10px auto 0; color: #666; text-align: left; font-size: 13px; line-height: 1.65; }
@@ -303,7 +305,7 @@
     .social-links { display: flex; flex-wrap: wrap; gap: 18px; }
     .status { color: #333; }
     .function-panel { min-width: 0; padding-left: 0; color: #111; }
-    .function-toggle { display: inline-flex; width: auto; min-width: 216px; min-height: 46px; align-items: center; justify-content: center; padding: 10px 18px; border: 1px solid #b9deef; border-radius: 8px; background: #e4f4fc; box-shadow: 0 2px 6px rgba(42, 119, 158, .12); color: #18394a; font-size: clamp(16px, 1.9vw, 20px); font-weight: 700; line-height: 1.2; text-align: center; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
+    .function-toggle { display: flex; width: fit-content; min-width: 216px; min-height: 46px; align-items: center; justify-content: center; margin-inline: auto; padding: 10px 18px; border: 1px solid #b9deef; border-radius: 8px; background: #e4f4fc; box-shadow: 0 2px 6px rgba(42, 119, 158, .12); color: #18394a; font-size: clamp(16px, 1.9vw, 20px); font-weight: 700; line-height: 1.2; text-align: center; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, background .18s ease; }
     .function-toggle:hover { transform: translateY(-1px); background: #d3edfa; box-shadow: 0 4px 10px rgba(42, 119, 158, .16); color: #18394a; }
     .function-toggle[aria-expanded="true"] { background: #d3edfa; }
     .function-menu { max-width: 430px; padding-top: 10px; }

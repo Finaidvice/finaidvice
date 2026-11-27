@@ -42,6 +42,8 @@
     .share-toggle:hover { background: #d3edfa; }
     .share-menu { position: absolute; z-index: 1; top: calc(100% + 8px); right: 0; width: 210px; padding: 6px; border: 1px solid #ddd; background: #fff; box-shadow: 0 8px 26px rgba(0,0,0,.12); }
     .share-menu[hidden] { display: none; }
+    .share-menu:not([hidden]) { animation: share-dropdown-in .2s ease-out both; transform-origin: top right; }
+    @keyframes share-dropdown-in { from { opacity: 0; transform: translateY(-8px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
     .share-menu button, .share-menu a { display: block; width: 100%; margin-bottom: 4px; padding: 8px 10px; border: 1px solid #d5e9f4; border-radius: 4px; background: #edf8fd; color: #18394a; text-align: left; text-decoration: none; font-size: 12px; }
     .share-menu button:hover, .share-menu a:hover { background: #e0f2fb; }
     .status { min-height: 18px; margin: 10px 0 0; color: #444; font-size: 12px; }

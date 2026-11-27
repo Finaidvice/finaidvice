@@ -23,6 +23,7 @@ const countries = [
   { code: "ZA", name: "South Africa", currency: "ZAR" },
   { code: "ES", name: "Spain", currency: "EUR" },
   { code: "LK", name: "Sri Lanka", currency: "LKR" },
+  { code: "SE", name: "Sweden", currency: "SEK" },
   { code: "CH", name: "Switzerland", currency: "CHF" },
   { code: "TH", name: "Thailand", currency: "THB" },
   { code: "AE", name: "United Arab Emirates", currency: "AED" },

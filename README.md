@@ -4,7 +4,7 @@ A small, portable static website with a country-to-country money transfer guide.
 
 ## Run locally
 
-Install the project dependencies, then run `npm run dev`. The site uses the Cascade UI package to animate the homepage feature menu. Selecting the international transfer option opens `transfer.html`, where the country-route tool runs in the browser without an API or account.
+Use Node.js 22.12 or newer. Install the project dependencies, then run `npm run dev`. The site uses the Cascade UI package to animate the homepage feature menu. Selecting the international transfer option opens `transfer.html`, where the country-route tool runs in the browser without an API or account.
 
 ## Deploy or move to another host
 
@@ -14,6 +14,7 @@ Set the repository's Pages source to **GitHub Actions** in Settings → Pages. P
 
 - Open the international transfer tool from the homepage's Financial function menu.
 - Select sending and receiving countries to get a route-specific transfer checklist on its own page.
+- Add route-specific bullet points and optional fee-flow diagrams in `content/routes/`; see [content/README.md](./content/README.md) for the format.
 - Swap the selected countries.
 - Copy or share the page and route tip using browser sharing, WhatsApp, or email.
 - Responsive layout and accessible native form controls.

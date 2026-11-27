@@ -1,3 +1,5 @@
+import MarkdownIt from "markdown-it";
+
 const countries = [
   { code: "AU", name: "Australia", currency: "AUD" },
   { code: "BR", name: "Brazil", currency: "BRL" },
@@ -32,9 +34,70 @@ const countries = [
 const fromSelect = document.getElementById("fromCountry");
 const toSelect = document.getElementById("toCountry");
 const tipText = document.getElementById("tipText");
+const routeContent = document.getElementById("routeContent");
 const shareToggle = document.getElementById("shareToggle");
 const shareMenu = document.getElementById("shareMenu");
 const shareStatus = document.getElementById("shareStatus");
+
+const routeGuidanceFiles = import.meta.glob("../content/routes/*.md", {
+  eager: true,
+  query: "?raw",
+  import: "default"
+});
+const routeGuidance = Object.fromEntries(
+  Object.entries(routeGuidanceFiles).map(([path, content]) => [
+    path.slice(path.lastIndexOf("/") + 1).replace(/\.md$/, ""),
+    content
+  ])
+);
+const markdown = new MarkdownIt({ html: false, linkify: true });
+const defaultFenceRenderer = markdown.renderer.rules.fence;
+markdown.renderer.rules.fence = (tokens, index, options, env, renderer) => {
+  const token = tokens[index];
+  if (token.info.trim().toLowerCase() === "mermaid") {
+    return `<pre class="mermaid">${markdown.utils.escapeHtml(token.content)}</pre>\n`;
+  }
+  return defaultFenceRenderer
+    ? defaultFenceRenderer(tokens, index, options, env, renderer)
+    : renderer.renderToken(tokens, index, options);
+};
+
+let diagramRenderId = 0;
+let mermaidPromise;
+
+function loadMermaid() {
+  if (!mermaidPromise) {
+    mermaidPromise = import("mermaid").then(({ default: mermaid }) => {
+      mermaid.initialize({
+        startOnLoad: false,
+        securityLevel: "strict",
+        theme: "neutral"
+      });
+      return mermaid;
+    });
+  }
+  return mermaidPromise;
+}
+
+async function renderRouteDiagrams(routeKey) {
+  const renderId = ++diagramRenderId;
+  const diagrams = routeContent.querySelectorAll(".mermaid");
+  if (!diagrams.length) return;
+
+  try {
+    const mermaid = await loadMermaid();
+    await mermaid.run({ nodes: diagrams });
+  } catch (error) {
+    console.error(`Could not render the ${routeKey} fee flow diagram.`, error);
+    if (renderId !== diagramRenderId || routeContent.dataset.route !== routeKey) return;
+
+    const message = document.createElement("p");
+    message.className = "diagram-error";
+    message.setAttribute("role", "status");
+    message.textContent = "The fee flow diagram could not be displayed. Check the Mermaid syntax in its route file.";
+    routeContent.append(message);
+  }
+}
 
 function fillSelect(select, selectedCode) {
   countries.forEach((country) => {
@@ -60,7 +123,13 @@ function updateTip() {
     tip = `For a transfer from ${from.name} (${from.currency}) to ${to.name} (${to.currency}), compare the exchange rate and transfer fee together. Check the recipient amount, delivery time, and whether intermediary-bank charges may apply.`;
   }
 
+  const routeKey = `${from.code}-${to.code}`;
+  const routeMarkdown = routeGuidance[routeKey];
   tipText.textContent = tip;
+  routeContent.dataset.route = routeKey;
+  routeContent.innerHTML = routeMarkdown ? markdown.render(routeMarkdown) : "";
+  routeContent.hidden = !routeMarkdown;
+  renderRouteDiagrams(routeKey);
   shareStatus.textContent = "";
   updateShareLinks(from, to, tip);
 }

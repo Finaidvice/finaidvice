@@ -35,6 +35,15 @@
     .route-result { margin-top: 24px; padding: 20px; border: 1px solid #dedede; background: #fafafa; animation: appear .24s ease-out; }
     .result-topline { font-size: 13px; font-weight: 700; }
     .tip { margin: 12px 0 18px; color: #333; font-size: 15px; line-height: 1.7; }
+    .route-content { margin: 18px 0 22px; color: #333; font-size: 14px; line-height: 1.65; }
+    .route-content h2 { margin: 20px 0 8px; color: #18394a; font-size: 16px; }
+    .route-content h2:first-child { margin-top: 0; }
+    .route-content ul, .route-content ol { margin: 8px 0 16px; padding-left: 22px; }
+    .route-content li + li { margin-top: 6px; }
+    .route-content a { color: #24698a; }
+    .route-content .mermaid { overflow-x: auto; margin: 14px 0; padding: 14px; border: 1px solid #d5e9f4; border-radius: 8px; background: #f7fbfd; text-align: center; }
+    .route-content .mermaid svg { display: block; max-width: none; height: auto; margin: 0 auto; }
+    .diagram-error { padding: 10px 12px; border-left: 3px solid #a34a3c; background: #fff4f1; color: #78352b; font-size: 13px; }
     .result-footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
     .disclaimer { max-width: 360px; color: #666; font-size: 12px; line-height: 1.55; }
     .share-area { position: relative; flex: 0 0 auto; }
@@ -84,6 +93,7 @@
     <section class="route-result" id="routeResult" aria-live="polite" aria-atomic="true" aria-labelledby="resultHeading">
       <div class="result-topline" id="resultHeading">Your route tip</div>
       <p class="tip" id="tipText"></p>
+      <div class="route-content" id="routeContent" hidden></div>
       <div class="result-footer">
         <span class="disclaimer">Guidance only — fees and availability vary by provider. Always check the latest terms.</span>
         <div class="share-area">

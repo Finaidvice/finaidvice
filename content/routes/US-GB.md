@@ -7,7 +7,7 @@
 
 ## Illustrative fee path
 
-Fees and payment paths vary by provider. This diagram shows possible fee points, not charges that apply to every transfer.
+Fees and payment paths vary by provider. This diagram shows possible fee points, not charges that apply to every transfer. Fart
 
 ```mermaid
 flowchart TB

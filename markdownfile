@@ -1,0 +1,22 @@
+
+Use Cascade,
+link to Cascade: https://erobwen.github.io/liquefy/cascade/
+
+Layout PNGs are instructions for AI coder in image form. [] means they are instructions inside the image for the position the [] is on. 
+
+Finance website basic feature structure:
+
+Feature 1:
+Select financial function, this will open a list of options ON A NEW PAGE.
+
+Feature 2:
+Share, with feature 2, the user can either copy the finance website's address to the users computer, or share it via other popular social media.
+
+Option 1:
+Transfer money with low fees, this will open up interactable 1.
+
+Interactable 1:
+One list instantiated two times on two different locations with different states. Here the user will choose two countries, then the page will respond with a respective tip according to the two countries chosen in the two lists of countries. After tip is given, a button to feature 2 should be available to the user.
+
+
+
